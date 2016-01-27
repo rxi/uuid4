@@ -73,12 +73,12 @@ int uuid4_generate(char *dst) {
   int i, n;
   /* seed? */
   if (!seeded) {
-    while (seed[0] == 0 && seed[1] == 0) {
+    do {
       int err = init_seed();
       if (err != UUID4_ESUCCESS) {
         return err;
       }
-    }
+    } while (seed[0] == 0 && seed[1] == 0);
     seeded = 1;
   }
   /* get random */
