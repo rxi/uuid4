@@ -36,12 +36,12 @@ static int init_seed(void) {
   int res;
   FILE *fp = fopen("/dev/urandom", "rb");
   if (!fp) {
-    return UUID4_ENOSEED;
+    return UUID4_EFAILURE;
   }
   res = fread(seed, 1, sizeof(seed), fp);
   fclose(fp);
   if ( res != sizeof(seed) ) {
-    return UUID4_ENOSEED;
+    return UUID4_EFAILURE;
   }
 
 #elif defined(_WIN32)
@@ -50,12 +50,12 @@ static int init_seed(void) {
   res = CryptAcquireContext(
     &hCryptProv, NULL, NULL, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT);
   if (!res) {
-    return UUID4_ENOSEED;
+    return UUID4_EFAILURE;
   }
   res = CryptGenRandom(hCryptProv, (DWORD) sizeof(seed), (PBYTE) seed);
   CryptReleaseContext(hCryptProv, 0);
   if (!res) {
-    return UUID4_ENOSEED;
+    return UUID4_EFAILURE;
   }
 
 #else
