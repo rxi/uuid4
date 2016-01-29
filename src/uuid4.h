@@ -13,7 +13,7 @@
 
 enum {
   UUID4_ESUCCESS =  0,
-  UUID4_EFAILURE = -1,
+  UUID4_EFAILURE = -1
 };
 
 int uuid4_generate(char *dst);
