@@ -5,7 +5,8 @@
 
 int main(void) {
   char buf[UUID4_LEN];
-  
+
+  uuid4_init();
   uuid4_generate(buf);
   printf("%s\n", buf);
 
