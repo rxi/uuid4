@@ -15,7 +15,9 @@
 
 #include "uuid4.h"
 
-
+#if (__STDC_VERSION__ >= 201112L)
+_Thread_local
+#endif
 static uint64_t seed[2];
 
 
