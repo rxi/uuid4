@@ -31,7 +31,7 @@ static uint64_t xorshift128plus(uint64_t *s) {
 
 
 int uuid4_init(void) {
-#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
+#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
   int res;
   FILE *fp = fopen("/dev/urandom", "rb");
   if (!fp) {
